@@ -1,11 +1,10 @@
-export type FilterKey = 'name' | 'surname';
+export const FILTER_KEYS = ['name', 'surname'] as const;
+export type FilterKey = typeof FILTER_KEYS[number];
 
 export interface FilterValue {
   key: FilterKey;
   value: string;
 }
-
-export const FILTER_KEYS: FilterKey[] = ['name', 'surname'];
 
 export function isFilterKey(key: string): key is FilterKey {
   return FILTER_KEYS.includes(key as FilterKey);
